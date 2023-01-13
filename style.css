@@ -8,6 +8,7 @@
   --green: #27c21f;
   --border: #313232;
   --gap: 1.5rem;
+  --transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 html {
@@ -28,6 +29,12 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  border-bottom: 1px solid var(--foreground-alt);
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--foreground);
   border-bottom: 1px solid var(--foreground);
 }
 
@@ -37,16 +44,21 @@ input[type="checkbox"] {
   appearance: none;
   position: relative;
   border: 0.1rem solid var(--border);
-  /* border: 0.1rem solid white; */
   background: var(--background-alt);
   width: 5rem;
   height: 3rem;
   border-radius: 2rem;
+  transition: var(--transition);
+}
+
+input[type="checkbox"]:checked {
+  background: var(--green);
+  border: 0.1rem solid var(--green);
 }
 
 input[type="checkbox"]::before {
   --size: 2.5rem;
-  --position: 0.175rem;
+  --position: 0.16rem;
   width: var(--size);
   height: var(--size);
   position: absolute;
@@ -55,14 +67,10 @@ input[type="checkbox"]::before {
   border-radius: 100%;
   content: " ";
   background: var(--foreground-alt);
-  transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: var(--transition);
   box-shadow: 0 0 0.5rem #00000025;
 }
 
-input[type="checkbox"]:checked {
-  background: #27c21f;
-  border: 0.1rem solid var(--green);
-}
 input[type="checkbox"]:checked::before {
   left: 2.25rem;
   background: white;
@@ -74,5 +82,5 @@ footer {
   position: absolute;
   bottom: calc(var(--gap) / 2);
   font-size: 0.75rem;
-  opacity: 0.5;
+  color: var(--foreground-alt);
 }
